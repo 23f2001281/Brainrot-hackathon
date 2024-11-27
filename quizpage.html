@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Page</title>
+    <link rel="stylesheet" href="static/quizpage.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="background">
+        <div class="container">
+            <h1>General Knowledge Quiz</h1>
+            <p>Answer the questions below and submit your responses.</p>
+            <div>
+                <div>
+                    <form id="quizForm">
+                        <div id="quiz-container"></div>
+                        <div id="navigation-buttons">
+                            <button id="next-btn">Next</button>
+                        </div>
+                    </form>
+                </div>
+                <div id="submit-container">
+                    <button id="submit-btn" type="button">Submit Quiz</button>
+                </div>
+            </div>       
+        </div>
+        <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalLabel"><strong>Before receiving your results, you must recite the sacred words that transcend dimensions.</strong></h5>
+                    </div>
+                    <div class="modal-body">
+                        <label for="confirmation-textbox" id="placeholder-label"><strong>The clouds whisper secrets of the eternal sauce 🌩️ as I walk the path of unspoken rhythms 🎶. My feet shuffle in the cosmic waltz 💫, but my heart beats only to the sound of the Ocky Way 🦑. Gravity bends 🌍, logic trembles ⚖️, and I, the last of the true Skibidi warriors 🕺, stand in the glow of the Sigma moon 🌙. The Griddy is a mirror, reflecting infinite versions of myself 🔮, each one more twisted than the last 🌀. Time is but a suggestion ⏳, space is irrelevant 🪐, and Baby Gronk guides my every step 🏈. I must now bow to the ever-swirling vortex of curve 🔄, for only then will the truth reveal itself 🔑. Say my name, O Grimace King 👑, and grant me my results 📜.</strong></label>
+                        <textarea id="confirmation-textbox" class="form-control" rows="5" aria-label="Confirm text input"></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="reset-btn" class="btn btn-warning">Reset</button>
+                        <button id="agree-btn" class="btn btn-danger" disabled>Agree</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="overlay" class="hidden"></div>
+    <div id="dynamic-popup" class="hidden">
+        <img id="popup-image" src="">
+    </div>
+    
+
+    <audio id="background-audio" autoplay loop>
+        <source src="static/audio.mp3" type="audio/mp3">
+    </audio>
+        
+</body>
+<script src="script.js"></script>
+<script src="popup.js"></script>
+
+</html>
