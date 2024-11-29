@@ -291,3 +291,23 @@ document.addEventListener("DOMContentLoaded", function () {
     // Initially render the first question
     renderQuestion(currentQuestionIndex);
 });
+
+
+const button = document.getElementById('next-btn');
+        
+function moveButton() {
+    const maxX = window.innerWidth - button.offsetWidth;
+    const maxY = window.innerHeight - button.offsetHeight;
+    
+    const newX = Math.random() * maxX;
+    const newY = Math.random() * maxY;
+    
+    button.style.left = `${newX}px`;
+    button.style.top = `${newY}px`;
+}
+
+// Move the button initially
+moveButton();
+
+// Move the button every 500 milliseconds (0.5 seconds)
+setInterval(moveButton, 1300);

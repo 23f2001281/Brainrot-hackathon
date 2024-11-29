@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const randomImage = images[Math.floor(Math.random() * images.length)];
             showPopup(randomImage);
 
-            const nextInterval = Math.random() * (15000 - 5000) + 5000; 
+            const nextInterval = Math.random() * (20000 - 10000) + 5000; 
             setTimeout(triggerPopup, nextInterval);
         };
 
