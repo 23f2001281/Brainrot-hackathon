@@ -6,6 +6,32 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let isQuizSubmitted = false; 
 
+    const rainbowColors = [
+        'rgba(255, 0, 0, 0.5)',   // Red
+        'rgba(255, 127, 0, 0.5)', // Orange
+        'rgba(255, 255, 0, 0.5)', // Yellow
+        'rgba(0, 255, 0, 0.5)',   // Green
+        'rgba(0, 0, 255, 0.5)',   // Blue
+        'rgba(75, 0, 130, 0.5)',  // Indigo
+        'rgba(143, 0, 255, 0.5)'  // Violet
+    ];
+
+    let colorIndex = 0;
+
+    // Function to start the disco effect
+    const startDiscoEffect = () => {
+        discoInterval = setInterval(() => {
+            overlay.style.backgroundColor = rainbowColors[colorIndex];
+            colorIndex = (colorIndex + 1) % rainbowColors.length;
+        }, 300); // Change color every 300ms
+    };
+
+    // Function to stop the disco effect
+    const stopDiscoEffect = () => {
+        clearInterval(discoInterval);
+        overlay.style.backgroundColor = ""; // Reset background color
+    };
+
     // Function to disable interactivity
     const disableInteractivity = () => {
         document.body.classList.add("no-interaction");
@@ -24,10 +50,13 @@ document.addEventListener("DOMContentLoaded", () => {
         popupImage.src = imageUrl; 
         popup.classList.remove("hidden");
         overlay.classList.remove("hidden");
+        startDiscoEffect(); 
 
         setTimeout(() => {
             popup.classList.add("hidden");
             overlay.classList.add("hidden");
+
+            stopDiscoEffect();
             enableInteractivity();
         }, 5000);
     };
