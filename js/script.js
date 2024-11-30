@@ -267,9 +267,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // Disable paste event
-    // document.getElementById("confirmation-textbox").addEventListener("paste", function(event) {
-    //     event.preventDefault();
-    // });
+    document.getElementById("confirmation-textbox").addEventListener("paste", function(event) {
+        event.preventDefault();
+    });
 
     // Handle the Submit button click
     document.getElementById("submit-btn").addEventListener("click", function () {
