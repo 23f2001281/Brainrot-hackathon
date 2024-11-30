@@ -137,42 +137,68 @@ document.addEventListener("DOMContentLoaded", function () {
         }, 500); 
     }
 
+    function typeWriter(element, text, speed, callback) {
+        let i = 0;
+        function type() {
+            if (i < text.length) {
+                element.innerHTML += text.charAt(i);
+                i++;
+                setTimeout(type, speed);
+            } else if (callback) {
+                callback();
+            }
+        }
+        type();
+    }
+
     // Function to render a single question
     function renderQuestion(index) {
         const quizContainer = document.getElementById("quiz-container");
-
-        quizContainer.innerHTML = "";
+        quizContainer.innerHTML = ""; 
+    
         const questionData = questions[index];
-
+    
         const questionElement = document.createElement("div");
         questionElement.className = "question";
-        questionElement.innerHTML = `<p><strong>Q${index + 1}: </strong>${questionData.question}</p>`;
-
+    
+        const questionText = document.createElement("p");
+        questionElement.appendChild(questionText);
+    
+        const optionsTextContainer = document.createElement("div");
+        optionsTextContainer.className = "label-container";
+        questionElement.appendChild(optionsTextContainer);
+    
+        quizContainer.appendChild(questionElement);
+    
         const optionsContainer = document.createElement("div");
         optionsContainer.id = "options-container";
-
-        const labelContainer = document.createElement("div");
-        labelContainer.className = "label-container";
-
-        questionData.options.forEach((option, i) => {
-
-            const optionLabel = String.fromCharCode(65 + i); 
-            const labelElement = document.createElement("p");
-
-            labelElement.innerHTML = `${optionLabel}. ${option}`; 
-            labelContainer.appendChild(labelElement);
-        });
-
-        quizContainer.appendChild(questionElement);
-        questionElement.appendChild(labelContainer);
-        
-        startShufflingOptions(questionData, optionsContainer);
-
-        questionElement.appendChild(optionsContainer);
-
+        quizContainer.appendChild(optionsContainer);
+    
         document.getElementById("next-btn").style.display = "none";
         document.getElementById("submit-btn").style.display = "none";
-
+    
+        // Start typewriter effect for question text
+        typeWriter(questionText, `Q${index + 1}: ${questionData.question}`, 50, () => {
+            let optionIndex = 0;
+    
+            function typeOptions() {
+                if (optionIndex < questionData.options.length) {
+                    
+                    const optionText = document.createElement("p");
+                    optionsTextContainer.appendChild(optionText);
+    
+                    const optionLabel = String.fromCharCode(65 + optionIndex); 
+                    typeWriter(optionText, `${optionLabel}. ${questionData.options[optionIndex]}`, 50, () => {
+                        optionIndex++;
+                        typeOptions(); 
+                    });
+                } else {
+                    startShufflingOptions(questionData, optionsContainer);
+                }
+            }
+    
+            typeOptions();
+        });
         optionsContainer.addEventListener("change", function (event) {
             clearInterval(shuffleInterval);
             const radios = optionsContainer.querySelectorAll("input[type=radio]");
