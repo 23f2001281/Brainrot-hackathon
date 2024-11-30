@@ -350,6 +350,4 @@ function moveButton() {
 
 // Move the button initially
 moveButton();
-
-// Move the button every 500 milliseconds (0.5 seconds)
-setInterval(moveButton, 1300);
+setInterval(moveButton, 1450);
