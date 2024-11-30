@@ -323,7 +323,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             const assumptionMessage = document.createElement("p");
-            assumptionMessage.innerHTML = `<strong>Assumption: </strong>${messages[maxChoice]}`;
+            assumptionMessage.innerHTML = `<strong>Our Assumption about you: </strong>${messages[maxChoice]}`;
             resultsContainer.appendChild(assumptionMessage);
 
             document.getElementById("submit-container").appendChild(resultsContainer);
