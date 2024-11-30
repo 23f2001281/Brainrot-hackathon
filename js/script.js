@@ -137,20 +137,36 @@ document.addEventListener("DOMContentLoaded", function () {
         }, 500); 
     }
 
+    window.isPopupActive = false;
     function typeWriter(element, text, speed, callback) {
         let i = 0;
+    
         function type() {
+            if (window.isPopupActive) {
+                console.log("Pausing typewriter, isPopupActive:", window.isPopupActive);
+                return new Promise((resolve) => {
+
+                    const checkInterval = setInterval(() => {
+                        if (!window.isPopupActive) {
+                            clearInterval(checkInterval);
+                            resolve();
+                        }
+                    }, 100); 
+                }).then(() => {
+                    type(); 
+                });
+            }
             if (i < text.length) {
                 element.innerHTML += text.charAt(i);
                 i++;
-                setTimeout(type, speed);
+                setTimeout(type, speed); 
             } else if (callback) {
-                callback();
+                callback(); 
             }
         }
         type();
     }
-
+    
     // Function to render a single question
     function renderQuestion(index) {
         const quizContainer = document.getElementById("quiz-container");

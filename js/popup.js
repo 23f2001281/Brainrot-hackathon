@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Function to stop the disco effect
     const stopDiscoEffect = () => {
         clearInterval(discoInterval);
-        overlay.style.backgroundColor = ""; // Reset background color
+        overlay.style.backgroundColor = ""; 
     };
 
     // Function to disable interactivity
@@ -44,7 +44,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Function to show the popup
     const showPopup = (imageUrl) => {
-        if (isQuizSubmitted) return; 
+        if (isQuizSubmitted || window.isPopupActive) return; 
+
+        window.isPopupActive = true;
+        console.log("Popup shown, isPopupActive:", window.isPopupActive);
 
         disableInteractivity();
         popupImage.src = imageUrl; 
@@ -58,6 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             stopDiscoEffect();
             enableInteractivity();
+            window.isPopupActive = false;
         }, 5000);
     };
 
