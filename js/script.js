@@ -350,4 +350,4 @@ function moveButton() {
 
 // Move the button initially
 moveButton();
-setInterval(moveButton, 1450);
+setInterval(moveButton, 1350);

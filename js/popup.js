@@ -73,7 +73,17 @@ document.addEventListener("DOMContentLoaded", () => {
             "static/picture/pic4.jpeg",
             "static/picture/pic5.jpeg",
             "static/picture/pic6.jpeg",
-            "static/picture/pic7.jpeg"
+            "static/picture/pic7.jpeg",
+            "static/picture/pic8.jpeg",
+            "static/picture/pic9.jpeg",
+            "static/picture/pic10.jpeg",
+            "static/picture/pic11.jpeg",
+            "static/picture/pic12.jpeg",
+            "static/picture/pic13.jpeg",
+            "static/picture/pic14.jpeg",
+            "static/picture/pic15.jpeg",
+            "static/picture/pic16.jpeg",
+            "static/picture/pic17.jpeg"
         ]; 
 
         const triggerPopup = () => {
